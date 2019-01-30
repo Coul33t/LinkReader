@@ -78,7 +78,7 @@ def solo_view():
     else:
         return redirect(url_for('loading'))
 
-    return render_template('display.html', title='Russian Roulette', links_list=l_r.get_random_link(1)) 
+    return render_template('display.html', title='Russian Roulette', links_list=l_r.get_random_link(1), solo=True) 
 
 @app.route('/logout')
 def logout():

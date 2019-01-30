@@ -77,22 +77,33 @@
             </ul>
         </nav>
 
-        {% set nb = 0 %}
+
+        {% set nb = namespace(a=0) %}
         {% for link in links_list %}
-            {% if nb%3 == 0 %}
-            {% set nb = 0%}
-            <div class="row">
+            {% if nb.a % 3 == 0 %}
+                {% set nb.a = 0 %}
+                <div class="row">
             {% endif %}
+
             {% if not link.startswith("https://gfycat.com") %}
-                <div class="col-sm-4"><img src="{{ link }}" class="img-responsive"/></div>
+                {% if solo %}
+                    <div class="col-sm-12"><img src="{{ link }}" class="img-responsive"/></div>
+                {% else %}
+                    <div class="col-sm-4"><img src="{{ link }}" class="img-responsive"/></div>
+                {% endif %}
             {% else %}
                 {% set link = link[:19] + 'ifr/' + link[19:]%}
-                <div class="col-sm-4"><iframe src='{{ link }}' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe></div>
-            {% endif %}
-            {% set nb = nb + 1%}
+                {% if solo %}
+                    <div class="col-sm-12"><iframe src='{{ link }}' frameborder='0' scrolling='no' allowfullscreen width='1280' height='808'></iframe></div>
+                {% else %}
+                    <div class="col-sm-4"><iframe src='{{ link }}' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe></div>
+                {% endif %}
+            {% endif %}          
+            {% set nb.a = nb.a + 1 %}
         {% endfor %}
         </div>
-
+        
+            
     </div>
     </body>
 
