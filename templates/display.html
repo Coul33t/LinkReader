@@ -2,30 +2,80 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="static/bootstrap-3.3.7/css/bootstrap.min.css">
-        <script src="static/jquery-3.3.1/jquery.min.js"></script>
-        <script src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-        <title>{{ title }}</title>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+        <title>Link Viewer</title>
     </head>
 
     <body>
     <div class="container-fluid">
 
-        <h1>{{ title }}</h1>
+        <h1>Link Viewer</h1>
         <b>{{ note }}</b>
-        <form action="/index">
-            <input type="submit" value="Index" />
-        </form>
-        <form action="/upload">
-            <input type="submit" value="Upload" />
-        </form>
-        <form action="/soloview">
-            <input type="submit" value="Soloview" />
-        </form>
-        <form action="/logout">
-            <input type="submit" value="Logout" />
-        </form>
+        
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="navbar-header">
+                <a class="navbar-brand abs" href="#">{{ title }}</a>
+            </div>
+            
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/loading">Upload</a></li>
+              <li class="nav-item"><a class="nav-link" href="/soloview">Soloview</a></li>
+              <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+
+            </ul>
+        </nav>
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-center">
+            <ul class="nav navbar-nav justify-content-center">
+                <li>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="checkbox" checked autocomplete="off"> Images
+                    </label>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="checkbox" checked autocomplete="off"> Webm
+                    </label>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="checkbox" checked autocomplete="off"> Videos
+                    </label>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="checkbox" checked autocomplete="off"> Likes
+                    </label>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="checkbox" checked autocomplete="off"> Favs
+                    </label>
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
 
         {% set nb = 0 %}
         {% for link in links_list %}
@@ -45,4 +95,6 @@
 
     </div>
     </body>
+
+
 </html>
