@@ -1,0 +1,12 @@
+secret_key.py
+website_list.py
+
+
+__pycache__
+test_files
+uploads
+database
+
+static/bootstrap-3.3.7
+static/jquery-3.3.1
+

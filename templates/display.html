@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="static/bootstrap-3.3.7/css/bootstrap.min.css">
+        <script src="static/jquery-3.3.1/jquery.min.js"></script>
+        <script src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <title>{{ title }}</title>
+    </head>
+
+    <body>
+    <div class="container-fluid">
+
+        <h1>{{ title }}</h1>
+        <b>{{ note }}</b>
+        <form action="/index">
+            <input type="submit" value="Index" />
+        </form>
+        <form action="/upload">
+            <input type="submit" value="Upload" />
+        </form>
+        <form action="/soloview">
+            <input type="submit" value="Soloview" />
+        </form>
+        <form action="/logout">
+            <input type="submit" value="Logout" />
+        </form>
+
+        {% set nb = 0 %}
+        {% for link in links_list %}
+            {% if nb%3 == 0 %}
+            {% set nb = 0%}
+            <div class="row">
+            {% endif %}
+            {% if not link.startswith("https://gfycat.com") %}
+                <div class="col-sm-4"><img src="{{ link }}" class="img-responsive"/></div>
+            {% else %}
+                {% set link = link[:19] + 'ifr/' + link[19:]%}
+                <div class="col-sm-4"><iframe src='{{ link }}' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe></div>
+            {% endif %}
+            {% set nb = nb + 1%}
+        {% endfor %}
+        </div>
+
+    </div>
+    </body>
+</html>
