@@ -2,8 +2,8 @@ constants.py
 
 __pycache__
 test_files
-uploads
-database
+uploads/*
+database/app.db
 
 static/bootstrap-3.3.7
 static/jquery-3.3.1
