@@ -1,7 +1,7 @@
 import csv
 import random as rn
 import pdb
-from website_list import VIDEO_LIST
+from constants import VIDEO_LIST
 
 class LinkReader:
     def __init__(self):

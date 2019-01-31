@@ -1,6 +1,4 @@
-secret_key.py
-website_list.py
-
+constants.py
 
 __pycache__
 test_files
